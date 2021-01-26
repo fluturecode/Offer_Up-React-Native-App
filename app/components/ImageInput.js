@@ -1,6 +1,6 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons"
 import React from "react"
-import { StyleSheet, View } from "react-native"
+import { Image, StyleSheet, View } from "react-native"
 import colors from "../config/colors.js"
 
 export default function ImageInput({ imageUri }) {
@@ -9,6 +9,7 @@ export default function ImageInput({ imageUri }) {
 			{!imageUri && (
 				<MaterialCommunityIcons color={colors.medium} name='camera' size={40} />
 			)}
+			{imageUri && <Image source={{ uri: imageUri }} style={styles.image} />}
 		</View>
 	)
 }
@@ -20,6 +21,11 @@ const styles = StyleSheet.create({
 		borderRadius: 15,
 		height: 100,
 		justifyContent: "center",
+		overflow: "hidden",
 		width: 100,
+	},
+	image: {
+		height: "100%",
+		width: "100%",
 	},
 })
